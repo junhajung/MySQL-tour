@@ -6,10 +6,6 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,8 +27,6 @@ public class MapController {
 	@Autowired
 	private MapRepository mapRepository;
 	
-	@Autowired
-	private MongoTemplate mTemplate;
 	
 	@Autowired
 	private StayRepository sRepository;
@@ -69,11 +63,6 @@ public class MapController {
 			@RequestParam(value = "memo") String memo)  {
 		String userid = principal.getName();
 		
-		Query query = new Query(new Criteria("userid").is(userid).and("name").is(name));
-		Update update = new Update();
-		update.set("title", title);
-		update.set("memo", memo);
-		mTemplate.upsert(query, update, map.getClass());
 		
 		return "redirect:/mymap";
 	}

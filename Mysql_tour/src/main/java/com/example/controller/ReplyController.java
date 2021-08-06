@@ -12,10 +12,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,8 +41,6 @@ public class ReplyController {
 	@Autowired
 	private FoodRepository fRepository;
 	
-	@Autowired
-	private MongoTemplate mTemplate;
 	
    // 댓글 일괄 삭제
    @RequestMapping(value="/batchdelete", method=RequestMethod.POST)
@@ -105,10 +99,6 @@ public class ReplyController {
 		String userid = principal.getName();
 		
 		if(tRepository.findByName(name) != null) {
-			Query query = new Query(new Criteria("_id").is(id).and("userid").is(userid));
-			Update update = new Update();
-			update.set("reply", update_reply);
-			mTemplate.upsert(query, update, reply.getClass());
 			return "redirect:/tour_details?name=" + URLEncoder.encode(name, "UTF-8");
 		}
 		else if(fRepository.findByName(name) != null) {
