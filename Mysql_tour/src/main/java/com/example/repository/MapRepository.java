@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.entity.MyMap;
 
-public interface MapRepository extends MongoRepository<MyMap, String>{
+public interface MapRepository extends JpaRepository<MyMap, String>{
 
 	List<MyMap> findByUserid(String userid);
 

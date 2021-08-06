@@ -1,35 +1,36 @@
 package com.example.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Document(collection = "MyMap")
+@Entity
+@Table(name = "MyMap")
 public class MyMap {
 
 	
-	@Field(name = "userid")
+	@Column(name = "userid")
 	private String userid;
 	
 	
-	@Field(name = "lat")
+	@Column(name = "lat")
 	private Double lat;
 	
-	@Field(name = "lng")
+	@Column(name = "lng")
 	private Double lng;
 	
-	@Field(name = "name")
+	@Column(name = "name")
 	private String name;
 	
 
-	@Field(name = "title")
+	@Column(name = "title")
 	private String title;
 	
 
-	@Field(name = "memo")
+	@Column(name = "memo")
 	private String memo;
 	
-	@Field(name = "addr")
+	@Column(name = "addr")
 	private String addr;
 	
 	

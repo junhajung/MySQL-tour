@@ -4,18 +4,12 @@ package com.example.repository;
 import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.entity.Reply;
 
-import net.bytebuddy.asm.Advice.OffsetMapping.Sort;
 
-import com.example.entity.MyUsers;
-
-
-public interface ReplyRepository extends MongoRepository<Reply, String> {
+public interface ReplyRepository extends JpaRepository<Reply, String> {
 
 	// SELECT COUNT(*) FROM USER WHERE USERID=#{USERID}
 	  int countByUseridIgnoreCaseContaining(String userid);

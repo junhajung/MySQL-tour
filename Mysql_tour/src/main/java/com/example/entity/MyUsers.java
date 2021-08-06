@@ -2,15 +2,17 @@ package com.example.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.sun.istack.NotNull;
 
-@Document(collection = "User")
+@Entity
+@Table(name = "User")
 public class MyUsers{
 	
 	@Id

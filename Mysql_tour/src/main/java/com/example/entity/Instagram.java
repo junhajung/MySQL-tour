@@ -1,24 +1,27 @@
 package com.example.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Document(collection = "instagram_tour") 
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name = "instagram_tour") 
 public class Instagram {
 	@Id
 	private String id;
 
-	@Field(name = "name")
+	@Column(name = "name")
 	private String name;
 
-	@Field(name = "content1")
+	@Column(name = "content1")
 	private String content1;
 
-	@Field(name = "content2")
+	@Column(name = "content2")
 	private String content2;
 
-	@Field(name = "content3")
+	@Column(name = "content3")
 	private String content3;
 
 	public String getId() {

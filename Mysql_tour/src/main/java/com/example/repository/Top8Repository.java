@@ -1,12 +1,10 @@
 package com.example.repository;
 
-import java.util.List;
-
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.entity.TOP8;
 
-public interface Top8Repository extends MongoRepository<TOP8, String>{
+public interface Top8Repository extends JpaRepository<TOP8, String>{
 
 	TOP8 findByName(String name);
 

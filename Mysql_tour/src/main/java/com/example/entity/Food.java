@@ -2,44 +2,47 @@ package com.example.entity;
 
 
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Document(collection = "Food")
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name = "Food")
 public class Food {
 	
 	@Id
 	private String id;
 		
-	@Field(name = "region")
+	@Column(name = "region")
 	private String region;
 	
-	@Field(name = "kate")
+	@Column(name = "kate")
 	private String kate;
 	
-	@Field(name = "name")
+	@Column(name = "name")
 	private String name;
 	
-	@Field(name = "menu")
+	@Column(name = "menu")
 	private String menu;
 	
-	@Field(name = "addr")
+	@Column(name = "addr")
 	private String addr;
 	
-	@Field(name = "phone")
+	@Column(name = "phone")
 	private String phone;
 	
-	@Field(name = "lat")
+	@Column(name = "lat")
 	private String lat;
 	
-	@Field(name = "lng")
+	@Column(name = "lng")
 	private String lng;
 	
-	@Field(name = "content")
+	@Column(name = "content")
 	private String content;
 	
-	@Field(name = "image")
+	@Column(name = "image")
 	private byte[] image;
 	
 	

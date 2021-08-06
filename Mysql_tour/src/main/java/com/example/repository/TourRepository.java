@@ -2,11 +2,12 @@ package com.example.repository;
 
 import java.util.List;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.example.entity.Tour;
 
 
-public interface TourRepository extends MongoRepository<Tour, String> {
+public interface TourRepository extends JpaRepository<Tour, String> {
 
 	Tour findByName(String name);
 	

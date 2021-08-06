@@ -1,9 +1,10 @@
 package com.example.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.entity.Instagram;
 
-public interface InstaRepository  extends MongoRepository<Instagram, String>{
+public interface InstaRepository  extends JpaRepository<Instagram, String>{
 
 }

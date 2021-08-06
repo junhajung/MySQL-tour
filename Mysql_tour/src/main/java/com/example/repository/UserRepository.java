@@ -4,12 +4,12 @@ package com.example.repository;
 import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.entity.MyUsers;
 
 
-public interface UserRepository extends MongoRepository<MyUsers, String> {
+public interface UserRepository extends JpaRepository<MyUsers, String> {
 
 	  
 	  MyUsers findByUserid(String userid);
