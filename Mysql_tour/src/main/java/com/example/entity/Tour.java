@@ -1,45 +1,47 @@
 package com.example.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Document(collection = "Tour") // mongodb에 생성될 collection이름
+import org.springframework.data.annotation.Id;
+@Entity
+@Table(name = "Tour") // mongodb에 생성될 collection이름
 public class Tour {
 	@Id
 	private String id;
 
-	@Field(name = "region")
+	@Column(name = "region")
 	private String region;
 
-	@Field(name = "kate")
+	@Column(name = "kate")
 	private String kate;
 
-	@Field(name = "tag")
+	@Column(name = "tag")
 	private String tag;
 
-	@Field(name = "name")
+	@Column(name = "name")
 	private String name;
 
-	@Field(name = "addr")
+	@Column(name = "addr")
 	private String addr;
 
-	@Field(name = "lat")
+	@Column(name = "lat")
 	private Double lat;
 
-	@Field(name = "lng")
+	@Column(name = "lng")
 	private Double lng;
 
-	@Field(name = "subtitle")
+	@Column(name = "subtitle")
 	private String subtitle;
 
-	@Field(name = "others")
+	@Column(name = "others")
 	private String others;
 
-	@Field(name = "content")
+	@Column(name = "content")
 	private String content;
 	
-	@Field(name = "image")
+	@Column(name = "image")
 	private byte[] image;
 
 	public String getId() {

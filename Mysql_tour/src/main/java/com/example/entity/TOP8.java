@@ -1,24 +1,26 @@
 package com.example.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Document(collection = "Top8")
+import org.springframework.data.annotation.Id;
+@Entity
+@Table(name = "Top8")
 public class TOP8 {
 	@Id
 	private String id;
 	
-	@Field(name = "name")
+	@Column(name = "name")
 	private String name;
 	
-	@Field(name = "rank")
+	@Column(name = "rank")
 	private String rank;
 	
-	@Field(name = "tag")
+	@Column(name = "tag")
 	private String tag;
 	
-	@Field(name = "image")
+	@Column(name = "image")
 	private byte[] image;
 	
 

@@ -2,13 +2,15 @@ package com.example.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Document(collection = "Reply")
+@Entity
+@Table(name = "Reply")
 public class Reply {
 	
 	@Id

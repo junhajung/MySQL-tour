@@ -1,21 +1,24 @@
 package com.example.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Document(collection = "naver_guide")
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name = "naver_guide")
 public class Naver_guide {
 	@Id
 	private String id;
 	
-	@Field(name = "image")
+	@Column(name = "image")
 	private byte[] image;
 	
-	@Field(name = "link")
+	@Column(name = "link")
 	private String link;
 	
-	@Field(name = "title")
+	@Column(name = "title")
 	private String title;
 
 	public String getId() {
