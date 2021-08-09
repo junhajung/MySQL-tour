@@ -31,16 +31,16 @@ import org.springframework.data.domain.Sort;
 @RequestMapping(value="/")
 public class TourController {
 	
-	@Autowired
+	@Autowired(required = false)
 	private TourRepository tRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private Top8Repository topRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private InstaRepository iRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private ReplyRepository rRepository;
 	
 	

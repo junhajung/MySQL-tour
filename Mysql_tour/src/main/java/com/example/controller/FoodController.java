@@ -8,7 +8,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -28,10 +27,10 @@ import com.example.repository.ReplyRepository;
 @RequestMapping(value = "/")
 public class FoodController {
 
-	@Autowired
+	@Autowired(required = false)
 	private FoodRepository fRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private ReplyRepository rRepository;
 	
 

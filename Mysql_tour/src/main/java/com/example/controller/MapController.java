@@ -24,17 +24,17 @@ import com.example.repository.StayRepository;
 @RequestMapping(value="/")
 public class MapController {
 	
-	@Autowired
+	@Autowired(required = false)
 	private MapRepository mapRepository;
 	
 	
-	@Autowired
+	@Autowired(required = false)
 	private StayRepository sRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private TourRepository tRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private NaverGuideRepository nRespository;
 	
 	// Mymap

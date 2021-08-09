@@ -40,25 +40,25 @@ import com.example.security.JoinService;
 @RequestMapping(value = "/user")
 public class UserController {
 	
-	@Autowired
+	@Autowired(required = false)
 	private FoodRepository fRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private UserRepository uRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private StayRepository sRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private TourRepository tRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private JoinService service;
 	
-	@Autowired
+	@Autowired(required = false)
 	private ReplyRepository rRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	BCryptPasswordEncoder pwEncoder;
 	
 

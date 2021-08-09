@@ -161,7 +161,7 @@
 
 
 				<div id="map">
-					<iframe src='http://127.0.0.1:9099/ROOT/chungnam' width=1160px,
+					<iframe src='http://127.0.0.1:9098/ROOT/chungnam' width=1160px,
 						height=700px frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0> </iframe>
 				</div>
 

@@ -2,6 +2,7 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,21 +25,22 @@ import com.example.repository.StayRepository;
 
 @Controller
 @RequestMapping(value="/")
+@EnableJpaRepositories
 public class HomeController {
 	
-	@Autowired
+	@Autowired(required = false)
 	private TourRepository tRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private FoodRepository fRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private StayRepository sRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private ActivityRepository aRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private Top8Repository topRepository;
 
 

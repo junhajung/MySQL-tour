@@ -27,10 +27,10 @@ import com.example.repository.StayRepository;
 @RequestMapping(value="/")
 public class StayController {
 	
-	@Autowired
+	@Autowired(required = false)
 	private StayRepository sRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private ReplyRepository rRepository;
 	
 	@RequestMapping(value="/stay")

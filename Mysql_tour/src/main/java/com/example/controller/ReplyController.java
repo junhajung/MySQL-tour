@@ -32,13 +32,13 @@ import com.example.repository.TourRepository;
 public class ReplyController {
 
 
-	@Autowired
+	@Autowired(required = false)
 	private ReplyRepository rRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private TourRepository tRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private FoodRepository fRepository;
 	
 	

@@ -5,8 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -23,7 +22,7 @@ public class Reply {
 	
 	private String userid;
 	
-	@ManyToOne
+//	@ManyToOne
 	private String name;
 
 	public String getId() {

@@ -5,11 +5,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "User")
@@ -18,7 +16,6 @@ public class MyUsers{
 	@Id
 	private String userid;
 
-	@NotNull
 	private String userpw;
 	
 	private String email;
@@ -32,7 +29,7 @@ public class MyUsers{
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date createdDate = new Date();
 
-	@OneToMany
+//	@OneToMany
 	private String reply;
 	
 	// 댓글 구현

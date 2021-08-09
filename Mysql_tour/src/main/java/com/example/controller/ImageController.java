@@ -26,19 +26,19 @@ import com.example.repository.StayRepository;
 @RequestMapping(value="/")
 public class ImageController {
 	
-	@Autowired
+	@Autowired(required = false)
 	private TourRepository tRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private FoodRepository fRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private StayRepository sRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private ActivityRepository aRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private NaverGuideRepository nRespository;
 	
 	

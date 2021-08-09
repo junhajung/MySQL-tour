@@ -2,14 +2,18 @@ package com.example.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
-
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 @Table(name = "naver_guide")
+@SequenceGenerator(name="SEQ", sequenceName = "SEQ_NAVER_NO", initialValue = 1, allocationSize = 1)
 public class Naver_guide {
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
 	private String id;
 	
 	@Column(name = "image")
