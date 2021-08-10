@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 @Entity
-@Table(name = "Tour") // mongodb에 생성될 collection이름
+@Table(name = "tour") // mongodb에 생성될 collection이름
 public class Tour {
 	@Id
-	private String id;
+	private int index;
 
 	@Column(name = "region")
 	private String region;
@@ -43,12 +43,14 @@ public class Tour {
 	@Column(name = "image")
 	private byte[] image;
 
-	public String getId() {
-		return id;
+	
+
+	public int getIndex() {
+		return index;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 	public String getRegion() {

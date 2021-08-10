@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 @Entity
-@Table(name = "Top8")
+@Table(name = "top8")
 public class TOP8 {
 	@Id
-	private String id;
+	private int index;
 	
 	@Column(name = "name")
 	private String name;
@@ -23,12 +23,14 @@ public class TOP8 {
 	private byte[] image;
 	
 
-	public String getId() {
-		return id;
+	
+
+	public int getIndex() {
+		return index;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 	public String getName() {

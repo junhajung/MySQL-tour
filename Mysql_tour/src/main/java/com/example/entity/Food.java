@@ -8,11 +8,11 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 
 @Entity
-@Table(name = "Food")
+@Table(name = "food")
 public class Food {
 	
 	@Id
-	private String id;
+	private int index;
 		
 	@Column(name = "region")
 	private String region;
@@ -49,16 +49,13 @@ public class Food {
 		super();
 	}
 
-
-	public String getId() {
-		return id;
+	public int getIndex() {
+		return index;
 	}
 
-
-	public void setId(String id) {
-		this.id = id;
+	public void setIndex(int index) {
+		this.index = index;
 	}
-
 
 	public String getRegion() {
 		return region;

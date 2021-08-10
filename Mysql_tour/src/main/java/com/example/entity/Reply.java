@@ -2,17 +2,21 @@ package com.example.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "Reply")
+@Table(name = "reply")
 public class Reply {
 	
 	@Id
+	private int index;
+	
+	@Column
 	private String id;
 	
 	private String reply;
@@ -25,12 +29,22 @@ public class Reply {
 //	@ManyToOne
 	private String name;
 
+	
+
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 	public String getReply() {

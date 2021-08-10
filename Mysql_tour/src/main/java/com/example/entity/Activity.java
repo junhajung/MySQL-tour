@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,9 +9,12 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name  = "Activity")
+@Table(name  = "activity")
 public class Activity {
 	@Id
+	private int index;
+	
+	@Column(name = "_id")
 	private String id;
 
 	@Column(name = "region")
@@ -38,6 +43,7 @@ public class Activity {
 	
     @Column(name = "image")
     private byte[] image;
+    
 
 	public String getId() {
 		return id;

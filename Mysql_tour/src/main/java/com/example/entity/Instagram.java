@@ -6,10 +6,10 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 
 @Entity
-@Table(name = "instagram_tour") 
+@Table(name = "insta") 
 public class Instagram {
 	@Id
-	private String id;
+	private int index;
 
 	@Column(name = "name")
 	private String name;
@@ -23,12 +23,14 @@ public class Instagram {
 	@Column(name = "content3")
 	private String content3;
 
-	public String getId() {
-		return id;
+	
+
+	public int getIndex() {
+		return index;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 	public String getName() {

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@Table(name = "naver_guide")
+@Table(name = "naver")
 @SequenceGenerator(name="SEQ", sequenceName = "SEQ_NAVER_NO", initialValue = 1, allocationSize = 1)
 public class Naver_guide {
 	@Id

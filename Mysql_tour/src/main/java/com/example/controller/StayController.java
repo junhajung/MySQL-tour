@@ -43,9 +43,13 @@ public class StayController {
 	
 	// 카테고리별 숙박업소 list
 	@RequestMapping(value="/staykate_list")
-	public String listingdetails2GET(Model model, @RequestParam(value="name") String name) {
+	public String StayKatelistGET(Model model, @RequestParam(value="name") String name) {
 		List<Stay> stay = sRepository.findByKate(name);
 		model.addAttribute("stay", stay);
+		
+		
+		System.out.println("0         " + stay.get(0));
+		System.out.println("1         " + stay.get(1));
 		
 		return "Stay/staykate_list";
 	}
