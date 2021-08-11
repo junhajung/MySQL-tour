@@ -55,7 +55,7 @@ public class StayController {
 	@RequestMapping(value="/stay_details")
 	public String staydetailGET(Model model, @RequestParam(value="name") String name) {
 		Stay staylist = sRepository.findByName(name);
-		List<Reply> replylist = rRepository.findAll();
+		List<Reply> replylist = rRepository.findByName(name);
 		int cntReply = rRepository.countByName(name);
 		
 		model.addAttribute("staylist" , staylist);
@@ -71,8 +71,8 @@ public class StayController {
 			HttpServletResponse response,
 			Authentication auth,
 			@RequestParam(value = "name", defaultValue = "", required = false) String name) throws IOException {
-		String str = "<script>alert('로그인 후 이용해주세요.'); location.href='http://127.0.0.1:9099/ROOT/stay_details?name="+  URLEncoder.encode(name,"UTF-8") +"'</script>";
-		try {
+		
+//		try {
 			User user = (User) auth.getPrincipal();
 			if(user!=null) {
 				String id = user.getUsername();
@@ -84,17 +84,22 @@ public class StayController {
 				vo.setUserid(id);
 				vo.setName(stay_name.getName());
 				vo.setReply(reply);
+
+				
+				System.out.println(vo.getUserid());
+				System.out.println(vo.getName());
+				System.out.println(vo.getReply());
 				rRepository.save(vo);
-				vo.toString();
 			}
-		}
-		catch(Exception e){
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println(str);
-			out.flush();
-			return "redirect:/stay_details?name="+ URLEncoder.encode(name,"UTF-8");
-		}
+//		}
+//		catch(Exception e){
+//			String str = "<script>alert('로그인 후 이용해주세요.'); location.href='http://127.0.0.1:9098/ROOT/stay_details?name="+  URLEncoder.encode(name,"UTF-8") +"'</script>";
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println(str);
+//			out.flush();
+//			return "redirect:/stay_details?name="+ URLEncoder.encode(name,"UTF-8");
+//		}
 		return "redirect:/stay_details?name="+ URLEncoder.encode(name,"UTF-8");
 	}
 }

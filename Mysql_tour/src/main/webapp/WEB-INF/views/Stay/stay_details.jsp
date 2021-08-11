@@ -581,7 +581,7 @@
 											작성자 : ${list.userid}
 											<div class="time hidden-xs">
 											작성시간 :
-											<fmt:formatDate value="${list.createdDate}" pattern="yyyy/MM/dd HH:mm" />
+											<fmt:formatDate value="${list.createddate}" pattern="yyyy/MM/dd HH:mm" />
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 												<div style="float: right;">
@@ -590,13 +590,13 @@
 														<security:authorize access="hasAuthority('user')">
 															<security:authentication property="principal.username" var="user_id" />
 															<c:if test="${user_id eq list.userid}">
-																<a href="${pageContext.request.contextPath}/reply/reply_delete?id=${list.id}&name=${list.name}"
+																<a href="${pageContext.request.contextPath}/reply/reply_delete?index=${list.index}&name=${list.name}"
 																	style="color: black;">삭제</a>
 															</c:if>
 														</security:authorize>
 
 														<security:authorize access="hasAuthority('admin')">
-															<a href="${pageContext.request.contextPath}/reply/reply_delete?id=${list.id}&name=${list.name}"
+															<a href="${pageContext.request.contextPath}/reply/reply_delete?index=${list.index}&name=${list.name}"
 																style="color: black;">삭제</a>
 														</security:authorize>
 													</security:authorize>

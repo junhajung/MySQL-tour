@@ -42,14 +42,14 @@ public class ReplyController {
 	private FoodRepository fRepository;
 	
 	
-   // 댓글 일괄 삭제
-   @RequestMapping(value="/batchdelete", method=RequestMethod.POST)
-   public String batchdeletePOST(@RequestParam(value="chk[]") String[] id) {
-   
-	   rRepository.deleteAllByIdIn(id);
-            
-      return "redirect:/user/myreply";
-   }
+//   // 댓글 일괄 삭제
+//   @RequestMapping(value="/batchdelete", method=RequestMethod.POST)
+//   public String batchdeletePOST(@RequestParam(value="chk[]") String[] id) {
+//   
+//	   rRepository.deleteAllByIdIn(id);
+//            
+//      return "redirect:/user/myreply";
+//   }
    
 	
    // 댓글 남긴 곳으로 이동
@@ -72,9 +72,8 @@ public class ReplyController {
 	@RequestMapping(value = "/reply_delete")
 	public String reply_delete(Model model, 
 			@RequestParam(value = "name") String name,
-			@RequestParam(value = "id") String id) throws UnsupportedEncodingException {
-		
-		rRepository.deleteById(id);
+			@RequestParam(value = "index") int index) throws UnsupportedEncodingException {
+		rRepository.deleteByIndex(index);
 		
 		if(tRepository.findByName(name) != null) {
 			return "redirect:/tour_details?name=" + URLEncoder.encode(name, "UTF-8");

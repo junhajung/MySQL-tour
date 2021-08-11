@@ -33,7 +33,7 @@ public class MyUsers{
 
 //	@OneToMany
 //	private List<Reply> reply;
-//	
+	
 	// 댓글 구현
 	
 
@@ -41,7 +41,7 @@ public class MyUsers{
 		return userid;
 	}
 	
-//	
+	
 //	public List<Reply> getReply() {
 //		return reply;
 //	}

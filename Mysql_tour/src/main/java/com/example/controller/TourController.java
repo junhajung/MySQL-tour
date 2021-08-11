@@ -81,7 +81,7 @@ public class TourController {
 		model.addAttribute("state", state);
 		
 		
-		List<Reply> replylist = rRepository.findByNameOrderByCreatedDateDesc(name);
+		List<Reply> replylist = rRepository.findByNameOrderByCreateddateDesc(name);
 		int cntReply = rRepository.countByName(name);
 		
 		model.addAttribute("replylist", replylist);

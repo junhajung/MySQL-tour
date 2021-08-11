@@ -190,37 +190,37 @@ public class UserController {
 		}
 	}
 
-	// 내 댓글 확인
-	@RequestMapping(value = "/myreply")
-	public String myreplyGET(Model model, 
-			Authentication auth,
-			@RequestParam(value = "page", defaultValue = "0") int page) {
-
-		// 페이지 url에 기본 param 값 추가
-		if (page == 0) {
-			return "redirect:/user/myreply?page=1";
-		}
-
-		User user = (User) auth.getPrincipal();
-		if (user != null) {
-			String id = user.getUsername();
-
-			// 페이지 기능
-			// import org.springframework.data.domain.PageRequest;
-			PageRequest pageable = PageRequest.of(page - 1, 10);
-			
-			List<Reply> list = rRepository.findByUseridOrderByCreatedDateDesc(id, pageable);
-			model.addAttribute("list", list);
-
-			// 전체 페이지 수 계산.
-			// 1->1, 13->2, 24->3 : 10개씩 보이도록
-			int totPages = rRepository.countByUserid(id);
-
-			model.addAttribute("totPages", (totPages - 1) / 10 + 1);
-		}
-
-		return "User/myreply";
-	}
+//	// 내 댓글 확인
+//	@RequestMapping(value = "/myreply")
+//	public String myreplyGET(Model model, 
+//			Authentication auth,
+//			@RequestParam(value = "page", defaultValue = "0") int page) {
+//
+//		// 페이지 url에 기본 param 값 추가
+//		if (page == 0) {
+//			return "redirect:/user/myreply?page=1";
+//		}
+//
+//		User user = (User) auth.getPrincipal();
+//		if (user != null) {
+//			String id = user.getUsername();
+//
+//			// 페이지 기능
+//			// import org.springframework.data.domain.PageRequest;
+//			PageRequest pageable = PageRequest.of(page - 1, 10);
+//			
+//			List<Reply> list = rRepository.findByUseridOrderByCreatedDateDesc(id, pageable);
+//			model.addAttribute("list", list);
+//
+//			// 전체 페이지 수 계산.
+//			// 1->1, 13->2, 24->3 : 10개씩 보이도록
+//			int totPages = rRepository.countByUserid(id);
+//
+//			model.addAttribute("totPages", (totPages - 1) / 10 + 1);
+//		}
+//
+//		return "User/myreply";
+//	}
 
 
 

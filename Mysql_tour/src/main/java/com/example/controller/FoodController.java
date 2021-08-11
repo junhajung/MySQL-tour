@@ -1,4 +1,4 @@
-package com.example.controller;
+	package com.example.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -75,7 +75,7 @@ public class FoodController {
 		
 		
 		// 댓글
-		List<Reply> replyList = rRepository.findByNameOrderByCreatedDateDesc(name);
+		List<Reply> replyList = rRepository.findByNameOrderByCreateddateDesc(name);
 		int cntReply = rRepository.countByName(name);
 
 		model.addAttribute("replyList", replyList);
