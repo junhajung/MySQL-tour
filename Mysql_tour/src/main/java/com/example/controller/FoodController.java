@@ -97,10 +97,12 @@ public class FoodController {
 			if (user != null) {
 				String id = user.getUsername();
 	
+				
+				Food food_name = fRepository.findByName(name);
 				// 저장할 댓글에 필요한건 로그인된 userid, 게시글 name, 댓글 reply 정보.
 				Reply vo = new Reply();
 				vo.setUserid(id);
-				vo.setName(name);
+				vo.setName(food_name.getName());
 				vo.setReply(reply);
 				rRepository.save(vo);
 			}

@@ -1,11 +1,13 @@
 package com.example.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Id;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -30,20 +32,25 @@ public class MyUsers{
     private Date createdDate = new Date();
 
 //	@OneToMany
-	private String reply;
-	
+//	private List<Reply> reply;
+//	
 	// 댓글 구현
-	public String getReply() {
-		return reply;
-	}
-
-	public void setReply(String reply) {
-		this.reply = reply;
-	}
+	
 
 	public String getUserid() {
 		return userid;
 	}
+	
+//	
+//	public List<Reply> getReply() {
+//		return reply;
+//	}
+//
+//
+//	public void setReply(List<Reply> reply) {
+//		this.reply = reply;
+//	}
+
 
 	public void setUserid(String userid) {
 		this.userid = userid;
@@ -97,15 +104,6 @@ public class MyUsers{
 		this.createdDate = createdDate;
 	}
 
-	@Override
-	public String toString() {
-		return "MyUsers [userid=" + userid + ", userpw=" + userpw + ", email=" + email + ", username=" + username
-				+ ", phone=" + phone + ", userauth=" + userauth + ", createdDate=" + createdDate + ", reply=" + reply
-				+ ", getReply()=" + getReply() + ", getUserid()=" + getUserid() + ", getUserpw()=" + getUserpw()
-				+ ", getEmail()=" + getEmail() + ", getUsername()=" + getUsername() + ", getPhone()=" + getPhone()
-				+ ", getUserauth()=" + getUserauth() + ", getCreatedDate()=" + getCreatedDate() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
-	}
-	
+
 	
 }

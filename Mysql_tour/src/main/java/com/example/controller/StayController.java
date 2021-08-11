@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.entity.Food;
 import com.example.entity.Reply;
 import com.example.entity.Stay;
 import com.example.repository.ReplyRepository;
@@ -46,11 +48,6 @@ public class StayController {
 	public String StayKatelistGET(Model model, @RequestParam(value="name") String name) {
 		List<Stay> stay = sRepository.findByKate(name);
 		model.addAttribute("stay", stay);
-		
-		
-		System.out.println("0         " + stay.get(0));
-		System.out.println("1         " + stay.get(1));
-		
 		return "Stay/staykate_list";
 	}
 
@@ -58,7 +55,7 @@ public class StayController {
 	@RequestMapping(value="/stay_details")
 	public String staydetailGET(Model model, @RequestParam(value="name") String name) {
 		Stay staylist = sRepository.findByName(name);
-		List<Reply> replylist = rRepository.findByNameOrderByCreatedDateDesc(name);
+		List<Reply> replylist = rRepository.findAll();
 		int cntReply = rRepository.countByName(name);
 		
 		model.addAttribute("staylist" , staylist);
@@ -80,12 +77,13 @@ public class StayController {
 			if(user!=null) {
 				String id = user.getUsername();
 				
+				
+				Stay stay_name = sRepository.findByName(name);
 				// 저장할 댓글에 필요한건 로그인된 userid, 게시글 name, 댓글 reply 정보.
 				Reply vo = new Reply();
 				vo.setUserid(id);
-				vo.setName(name);
+				vo.setName(stay_name.getName());
 				vo.setReply(reply);
-				
 				rRepository.save(vo);
 				vo.toString();
 			}

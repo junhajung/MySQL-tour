@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Instagram;
 import com.example.entity.Reply;
+import com.example.entity.Stay;
 import com.example.entity.TOP8;
 import com.example.entity.Tour;
 import com.example.repository.InstaRepository;
@@ -102,10 +103,11 @@ public class TourController {
 			if(user!=null) {
 				String id = user.getUsername();
 				
+				Tour tour_name = tRepository.findByName(name);
 				// 저장할 댓글에 필요한건 로그인된 userid, 게시글 name, 댓글 reply 정보.
 				Reply vo = new Reply();
 				vo.setUserid(id);
-				vo.setName(name);
+				vo.setName(tour_name.getName());
 				vo.setReply(reply);
 				
 				rRepository.save(vo);

@@ -145,31 +145,31 @@ public class ReplyController {
    }
 
    
-   @RequestMapping(value="/batchupdate1", method=RequestMethod.POST)
-   public String batchupdatePOST(@RequestParam(value="id[]") String[] id,
-         @RequestParam(value="userid[]") String[] userid,
-         @RequestParam(value="name[]") String[] name,
-         @RequestParam(value="reply[]") String[] reply,
-         @RequestParam(value="createdDate[]") String[] createdDate) {
-      
-      if(id.length > 0) {
-         
-         HashSet<Reply> list = new HashSet<Reply>();
-
-         for(int i=0; i<id.length; i++) {
-            Reply vo = new Reply();
-            vo.setId(id[i]);
-            vo.setUserid(userid[i]);
-            vo.setName(name[i]);
-            vo.setReply(reply[i]);
-            vo.setCreatedDate(createdDate[i]);
-            list.add(vo);         
-         }               
-         rRepository.saveAll(list);
-         System.out.println(list);
-      }
-   
-      return "redirect:/user/myreply";
-   }
+//   @RequestMapping(value="/batchupdate1", method=RequestMethod.POST)
+//   public String batchupdatePOST(@RequestParam(value="id[]") String[] id,
+//         @RequestParam(value="userid[]") String[] userid,
+//         @RequestParam(value="name[]") String[] name,
+//         @RequestParam(value="reply[]") String[] reply,
+//         @RequestParam(value="createdDate[]") String[] createdDate) {
+//      
+//      if(id.length > 0) {
+//         
+//         HashSet<Reply> list = new HashSet<Reply>();
+//
+//         for(int i=0; i<id.length; i++) {
+//            Reply vo = new Reply();
+//            vo.setId(id[i]);
+//            vo.setUserid(userid[i]);
+//            vo.setName(name[i]);
+//            vo.setReply(reply[i]);
+//            vo.setCreatedDate(createdDate[i]);
+//            list.add(vo);         
+//         }               
+//         rRepository.saveAll(list);
+//         System.out.println(list);
+//      }
+//   
+//      return "redirect:/user/myreply";
+//   }
    
 }

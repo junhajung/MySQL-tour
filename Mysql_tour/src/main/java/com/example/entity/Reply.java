@@ -5,8 +5,11 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -16,20 +19,54 @@ public class Reply {
 	@Id
 	private int index;
 	
-	@Column
+	@Column(name = "id")
 	private String id;
 	
+	@Column(name = "reply")
 	private String reply;
 	
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date createdDate = new Date();
+	@CreationTimestamp
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@Column(name = "created_Date")
+    private Date createdDate;
 	
+	@Column(name = "userid")
 	private String userid;
 	
-//	@ManyToOne
+	@Column(name = "name")
 	private String name;
+	
+	@ManyToOne  
+    @JoinColumn (name = "name", insertable=false, updatable=false)
+	private Food food_name;
+	
+	@ManyToOne  
+    @JoinColumn (name = "name", insertable=false, updatable=false)
+	private Stay stay_name;
+	
+	@ManyToOne  
+    @JoinColumn (name = "name", insertable=false, updatable=false)
+	private Tour tour_name;
+	
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
 
 	public String getId() {
 		return id;
@@ -37,14 +74,6 @@ public class Reply {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
 	}
 
 	public String getReply() {
@@ -57,10 +86,6 @@ public class Reply {
 
 	public Date getCreatedDate() {
 		return createdDate;
-	}
-
-	public void setCreatedDate(String createdDate2) {
-		this.createdDate = createdDate;
 	}
 	
 	public void setCreatedDate(Date createdDate) {
@@ -76,19 +101,31 @@ public class Reply {
 		this.userid = userid;
 	}
 
-	public String getName() {
-		return name;
+	public Food getFood_name() {
+		return food_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFood_name(Food food_name) {
+		this.food_name = food_name;
 	}
 
-	@Override
-	public String toString() {
-		return "Reply [id=" + id + ", reply=" + reply + ", createdDate=" + createdDate + ", userid=" + userid
-				+ ", name=" + name + "]";
+	public Stay getStay_name() {
+		return stay_name;
 	}
+
+	public void setStay_name(Stay stay_name) {
+		this.stay_name = stay_name;
+	}
+
+	public Tour getTour_name() {
+		return tour_name;
+	}
+
+	public void setTour_name(Tour tour_name) {
+		this.tour_name = tour_name;
+	}
+
+
 	
 	
 }

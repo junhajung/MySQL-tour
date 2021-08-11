@@ -38,5 +38,7 @@ public interface ReplyRepository extends JpaRepository<Reply, String> {
 
 	List<Reply> findByUseridOrderByCreatedDateDesc(String id, PageRequest pageable);
 
+	List<Reply> findByName(String name);
+
 
 }
