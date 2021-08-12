@@ -23,7 +23,6 @@ public class MyUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
 		// username을 넘겨서 일치하는 사용자 1명의 정보 받기
 		MyUsers user = userR.findByUserid(userid);
-		System.out.println(user.toString());
 		System.out.println("MyDetail : " + user.getUserpw());
 
 		// admin, user

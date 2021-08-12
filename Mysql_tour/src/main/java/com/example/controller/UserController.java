@@ -138,32 +138,32 @@ public class UserController {
 			tRepository.save(tour);
 			return "redirect:/tour_details?name=" + URLEncoder.encode(name.trim(), "UTF-8") ;
 		}
-		else if(role.equals("stay")) {
-			Stay vo = sRepository.findByName(prename);
-			byte[] img = vo.getImage();
-			
-			if(file.getOriginalFilename() != null ) {
-				stay.setImage(file.getBytes());
-			}
-			if(file.getBytes().length < 1 ) {
-				stay.setImage(img);
-			}
-			sRepository.deleteByName(prename);
-			Double lat1 = Double.parseDouble(lat);
-			Double lng1 = Double.parseDouble(lng);
-			stay.setName(name.trim());
-			stay.setAddr(addr);
-			stay.setKate(kate);
-			stay.setContent(content);
-			stay.setLat(lat1);
-			stay.setLng(lng1);
-			stay.setRegion(region);
-			stay.setInfo(info);
-			
-			sRepository.save(stay);
-			return "redirect:/stay_details?name=" + URLEncoder.encode(name.trim(), "UTF-8") ;
-			
-		}
+//		else if(role.equals("stay")) {
+//			Stay vo = sRepository.findByName(prename);
+//			byte[] img = vo.getImage();
+//			
+//			if(file.getOriginalFilename() != null ) {
+//				stay.setImage(file.getBytes());
+//			}
+//			if(file.getBytes().length < 1 ) {
+//				stay.setImage(img);
+//			}
+//			sRepository.deleteByName(prename);
+//			Double lat1 = Double.parseDouble(lat);
+//			Double lng1 = Double.parseDouble(lng);
+//			stay.setName(name.trim());
+//			stay.setAddr(addr);
+//			stay.setKate(kate);
+//			stay.setContent(content);
+//			stay.setLat(lat1);
+//			stay.setLng(lng1);
+//			stay.setRegion(region);
+//			stay.setInfo(info);
+//			
+//			sRepository.save(stay);
+//			return "redirect:/stay_details?name=" + URLEncoder.encode(name.trim(), "UTF-8") ;
+//			
+//		}
 		else {
 			Food vo = fRepository.findByName(prename);
 			byte[] img = vo.getImage();
@@ -372,107 +372,107 @@ public class UserController {
 			return "redirect:/food_region?location=" + URLEncoder.encode(kate, "UTF-8");
 		}
 	}
-
-	@RequestMapping(value = "/content_insert", method = RequestMethod.POST)
-	public String content_insert(Model model, 
-			@ModelAttribute Stay stay,
-
-			@ModelAttribute Tour tour, 
-			@RequestParam(value = "kate") String kate, 
-			@RequestParam(value = "subtitle") String subtitle,
-			@RequestParam(value = "others") String others,
-
-			@ModelAttribute Food food, 
-			@RequestParam(value = "menu") String menu, 
-			@RequestParam(value = "phone") String phone,
-
-			@RequestParam(value = "name") String name, 
-			@RequestParam("img1") MultipartFile file,
-			@RequestParam(value = "lat") String lat, 
-			@RequestParam(value = "lng") String lng,
-			@RequestParam(value = "content") String content,
-			@RequestParam(value = "region") String region,
-			@RequestParam(value = "info") String info, 
-			@RequestParam(value = "addr") String addr,
-
-			HttpServletResponse response,
-			@RequestParam(value = "role") String role) throws IOException {
-
-		if (role.equals("stay")) {
-			Stay find_stay = sRepository.findByName(name);
-			if(find_stay == null) {
-				if (file.getBytes().length > 0) { // 파일이 첨부되었다면
-					stay.setImage(file.getBytes());
-				}
-				stay.setName(name);
-				stay.setLat(Double.parseDouble(lat));
-				stay.setLng(Double.parseDouble(lng));
-				stay.setContent(content);
-				stay.setAddr(addr);
-				stay.setKate(kate);
-				stay.setRegion(region);
-				stay.setInfo(info);
-	
-				sRepository.save(stay);
-			}
-			else {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('중복된 이름입니다.'); location.href='http://127.0.0.1:9099/ROOT/user/content_list'</script>");
-				out.flush();
-			}
-		} else if (role.equals("tour")) {
-			Tour find_tour = tRepository.findByName(name);
-			if(find_tour == null) {
-				if (file.getBytes().length > 0) { // 파일이 첨부되었다면
-					tour.setImage(file.getBytes());
-				}
-				tour.setName(name);
-				tour.setLat(Double.parseDouble(lat));
-				tour.setLng(Double.parseDouble(lng));
-				tour.setKate(kate);
-				tour.setRegion(region);
-				tour.setSubtitle(subtitle);
-				tour.setContent(content);
-				tour.setAddr(addr);
-				tour.setOthers(others);
-	
-				tRepository.save(tour);
-			}
-			else {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('중복된 이름입니다.'); location.href='http://127.0.0.1:9099/ROOT/user/content_list'</script>");
-				out.flush();
-			}
-		} else { // food
-			Food find_food = fRepository.findByName(name);
-			if(find_food == null) {
-				if (file.getBytes().length > 0) { // 파일이 첨부되었다면
-					food.setImage(file.getBytes());
-				}
-				food.setName(name);
-				food.setLat(lat);
-				food.setLng(lng);
-				food.setKate(kate);
-				food.setMenu(menu);
-				food.setPhone(phone);
-				food.setContent(content);
-				food.setAddr(addr);
-				food.setRegion(region);
-	
-				fRepository.save(food);
-			}
-			else {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('중복된 이름입니다.'); location.href='http://127.0.0.1:9099/ROOT/user/content_list'</script>");
-				out.flush();
-			}
-		}
-
-		return "redirect:/user/content_list";
-	}
+//
+//	@RequestMapping(value = "/content_insert", method = RequestMethod.POST)
+//	public String content_insert(Model model, 
+//			@ModelAttribute Stay stay,
+//
+//			@ModelAttribute Tour tour, 
+//			@RequestParam(value = "kate") String kate, 
+//			@RequestParam(value = "subtitle") String subtitle,
+//			@RequestParam(value = "others") String others,
+//
+//			@ModelAttribute Food food, 
+//			@RequestParam(value = "menu") String menu, 
+//			@RequestParam(value = "phone") String phone,
+//
+//			@RequestParam(value = "name") String name, 
+//			@RequestParam("img1") MultipartFile file,
+//			@RequestParam(value = "lat") String lat, 
+//			@RequestParam(value = "lng") String lng,
+//			@RequestParam(value = "content") String content,
+//			@RequestParam(value = "region") String region,
+//			@RequestParam(value = "info") String info, 
+//			@RequestParam(value = "addr") String addr,
+//
+//			HttpServletResponse response,
+//			@RequestParam(value = "role") String role) throws IOException {
+//
+//		if (role.equals("stay")) {
+//			Stay find_stay = sRepository.findByName(name);
+//			if(find_stay == null) {
+//				if (file.getBytes().length > 0) { // 파일이 첨부되었다면
+//					stay.setImage(file.getBytes());
+//				}
+//				stay.setName(name);
+//				stay.setLat(Double.parseDouble(lat));
+//				stay.setLng(Double.parseDouble(lng));
+//				stay.setContent(content);
+//				stay.setAddr(addr);
+//				stay.setKate(kate);
+//				stay.setRegion(region);
+//				stay.setInfo(info);
+//	
+//				sRepository.save(stay);
+//			}
+//			else {
+//				response.setContentType("text/html; charset=UTF-8");
+//				PrintWriter out = response.getWriter();
+//				out.println("<script>alert('중복된 이름입니다.'); location.href='http://127.0.0.1:9099/ROOT/user/content_list'</script>");
+//				out.flush();
+//			}
+//		} else if (role.equals("tour")) {
+//			Tour find_tour = tRepository.findByName(name);
+//			if(find_tour == null) {
+//				if (file.getBytes().length > 0) { // 파일이 첨부되었다면
+//					tour.setImage(file.getBytes());
+//				}
+//				tour.setName(name);
+//				tour.setLat(Double.parseDouble(lat));
+//				tour.setLng(Double.parseDouble(lng));
+//				tour.setKate(kate);
+//				tour.setRegion(region);
+//				tour.setSubtitle(subtitle);
+//				tour.setContent(content);
+//				tour.setAddr(addr);
+//				tour.setOthers(others);
+//	
+//				tRepository.save(tour);
+//			}
+//			else {
+//				response.setContentType("text/html; charset=UTF-8");
+//				PrintWriter out = response.getWriter();
+//				out.println("<script>alert('중복된 이름입니다.'); location.href='http://127.0.0.1:9099/ROOT/user/content_list'</script>");
+//				out.flush();
+//			}
+//		} else { // food
+//			Food find_food = fRepository.findByName(name);
+//			if(find_food == null) {
+//				if (file.getBytes().length > 0) { // 파일이 첨부되었다면
+//					food.setImage(file.getBytes());
+//				}
+//				food.setName(name);
+//				food.setLat(lat);
+//				food.setLng(lng);
+//				food.setKate(kate);
+//				food.setMenu(menu);
+//				food.setPhone(phone);
+//				food.setContent(content);
+//				food.setAddr(addr);
+//				food.setRegion(region);
+//	
+//				fRepository.save(food);
+//			}
+//			else {
+//				response.setContentType("text/html; charset=UTF-8");
+//				PrintWriter out = response.getWriter();
+//				out.println("<script>alert('중복된 이름입니다.'); location.href='http://127.0.0.1:9099/ROOT/user/content_list'</script>");
+//				out.flush();
+//			}
+//		}
+//
+//		return "redirect:/user/content_list";
+//	}
 	
 	// 회원목록
    @RequestMapping(value = "/admin_user")

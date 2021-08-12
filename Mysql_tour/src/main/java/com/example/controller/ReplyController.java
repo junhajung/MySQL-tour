@@ -3,8 +3,9 @@ package com.example.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.Principal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import com.example.entity.MyMap;
 import com.example.entity.Reply;
 import com.example.repository.FoodRepository;
 import com.example.repository.ReplyRepository;
@@ -87,12 +87,12 @@ public class ReplyController {
 	}
 	
 	//본인 댓글 삭제 구현 
-	@RequestMapping(value = "/reply_update")
+	@RequestMapping(value = "/reply_update", method = RequestMethod.POST)
 	public String reply_update(Model model, 
 			@ModelAttribute Reply reply,
 			Principal principal,
 			@RequestParam(value = "name") String name,
-			@RequestParam(value = "id") String id,
+			@RequestParam(value = "index") int index,
 			@RequestParam(value = "update_reply") String update_reply) throws UnsupportedEncodingException {
 		
 		String userid = principal.getName();
@@ -104,6 +104,15 @@ public class ReplyController {
 			return "redirect:/food_details?name=" + URLEncoder.encode(name, "UTF-8");	
 		}
 		else {
+			List<Reply> test = rRepository.findByIndex(index);
+			if(test != null) {
+				reply.setReply(update_reply);
+				reply.setUserid(userid);
+				
+				Calendar cal = Calendar.getInstance();
+				reply.setCreateddate(cal.getTime());
+				rRepository.save(reply);
+			}
 			return "redirect:/stay_details?name=" + URLEncoder.encode(name, "UTF-8");
 		}
 		

@@ -46,5 +46,7 @@ public interface ReplyRepository extends JpaRepository<Reply, String> {
 
 	void deleteByIndex(int index);
 
+	List<Reply> findByIndex(int index);
+
 
 }

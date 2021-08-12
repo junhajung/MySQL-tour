@@ -165,93 +165,93 @@
 
 				<div id="map" style="height: 500px; width:1000px;" ></div>
 				<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"> </script>
-<script>
- function initMap() {
-	 
-	 
-	 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 9,
-    center: {lat: 36.34336332178587, lng: 127.20574743353538},
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-  const iconBase = "resources/img/";
-	  const icons = {
-	    stay: {
-	      icon: iconBase + "stay.png",
-	    },
-	    tour: {
-	      icon: iconBase + "tour.png",
-	    },
-	    icon: {
-	      icon: iconBase + "icon.png",
-	    },
-	  };
-  var flightPlanCoordinates = [
-	  <c:forEach items='${list2}' var="list">
-	    {"lat": ${list.stx},"lng": ${list.sty}, type:"tour",},
-	  </c:forEach>
-	    
-	    <c:forEach items='${list3}' var="list">
-	    {"lat": ${list.stx},"lng": ${list.sty}, type:"stay",},
-	  </c:forEach>
-	    
-	    <c:forEach items='${list4}' var="list">
-	    {"lat": ${list.lat},"lng": ${list.lng}, type:"icon",},
-	  </c:forEach>
-  ];
-  var locations = [
-	  <c:forEach items='${list2}' var="list">
-	  ['${list.name}',${list.stx}, ${list.sty}],
-	  </c:forEach>  
-	  <c:forEach items='${list3}' var="list">
-	  ['${list.name}',${list.stx}, ${list.sty}],
-	  </c:forEach>  
-	  <c:forEach items='${list4}' var="list">
-	  ['${list.name}',${list.lat}, ${list.lng}],
-	  </c:forEach>  
-    ];
-  
-  
-  var infowindow = new google.maps.InfoWindow();
-  
-var marker, i;
-var markers = [];
-   for (i = 0; i < locations.length; i++) {  
-     marker = new google.maps.Marker({
-       id:i,
-       position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-       icon: icons[flightPlanCoordinates[i].type].icon,
-       map: map,
-     });
-	markers.push(marker);
-     google.maps.event.addListener(marker, 'click', (function(marker, i) {
-       return function() {
-    	   infowindow.setContent(locations[i][0]);
-         infowindow.open(map, marker);
-       }
-     })(marker, i));
-     
-     
-   }
-   
-   var clusterOptions = {
-		   imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-		   gridSize: 30,
-		   zoomOnClick: false,
-		   maxZoom: 10,
-		 };
-   var cluster = new MarkerClusterer(map, markers, clusterOptions)
-   
-   const styles = cluster.getStyles();
-   for (let i=0; i<styles.length; i++) {
-     styles[i].textColor = "black";
-     styles[i].textSize = 10;
-   }
-}
- </script>
+		<script>
+		 function initMap() {
+			 
+			 
+			 
+		  var map = new google.maps.Map(document.getElementById('map'), {
+		    zoom: 9,
+		    center: {lat: 36.34336332178587, lng: 127.20574743353538},
+		    mapTypeId: google.maps.MapTypeId.ROADMAP
+		  });
+		  const iconBase = "resources/img/";
+			  const icons = {
+			    stay: {
+			      icon: iconBase + "stay.png",
+			    },
+			    tour: {
+			      icon: iconBase + "tour.png",
+			    },
+			    icon: {
+			      icon: iconBase + "icon.png",
+			    },
+			  };
+		  var flightPlanCoordinates = [
+			  <c:forEach items='${list2}' var="list">
+			    {"lat": ${list.stx},"lng": ${list.sty}, type:"tour",},
+			  </c:forEach>
+			    
+			    <c:forEach items='${list3}' var="list">
+			    {"lat": ${list.stx},"lng": ${list.sty}, type:"stay",},
+			  </c:forEach>
+			    
+			    <c:forEach items='${list4}' var="list">
+			    {"lat": ${list.lat},"lng": ${list.lng}, type:"icon",},
+			  </c:forEach>
+		  ];
+		  var locations = [
+			  <c:forEach items='${list2}' var="list">
+			  ['${list.name}',${list.stx}, ${list.sty}],
+			  </c:forEach>  
+			  <c:forEach items='${list3}' var="list">
+			  ['${list.name}',${list.stx}, ${list.sty}],
+			  </c:forEach>  
+			  <c:forEach items='${list4}' var="list">
+			  ['${list.name}',${list.lat}, ${list.lng}],
+			  </c:forEach>  
+		    ];
+		  
+		  
+		  var infowindow = new google.maps.InfoWindow();
+		  
+		var marker, i;
+		var markers = [];
+		   for (i = 0; i < locations.length; i++) {  
+		     marker = new google.maps.Marker({
+		       id:i,
+		       position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		       icon: icons[flightPlanCoordinates[i].type].icon,
+		       map: map,
+		     });
+			markers.push(marker);
+		     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+		       return function() {
+		    	   infowindow.setContent(locations[i][0]);
+		         infowindow.open(map, marker);
+		       }
+		     })(marker, i));
+		     
+		     
+		   }
+		   
+		   var clusterOptions = {
+				   imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+				   gridSize: 30,
+				   zoomOnClick: false,
+				   maxZoom: 10,
+				 };
+		   var cluster = new MarkerClusterer(map, markers, clusterOptions)
+		   
+		   const styles = cluster.getStyles();
+		   for (let i=0; i<styles.length; i++) {
+		     styles[i].textColor = "black";
+		     styles[i].textSize = 10;
+		   }
+		}
+		 </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUGYhhiNdmmRJtBb7EFj0VVQfpVoC356o&callback=initMap"> </script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUGYhhiNdmmRJtBb7EFj0VVQfpVoC356o&callback=initMap"> </script>
 
 			</div>
 		</div>

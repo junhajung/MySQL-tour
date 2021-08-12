@@ -45,10 +45,13 @@ public class ImageController {
 	
 	@RequestMapping(value="/stay_image")
 	public ResponseEntity<byte[]> stay_imageGET(@RequestParam("name") String name, HttpServletRequest request) {
+		
 		try {
 			Stay vo = sRepository.findByName(name);
 			byte[] img = vo.getImage();
+			System.out.println("aaaaaaaaaaaaaaaaaaaaa : " + img.length);
 			if(img.length>0) {
+				System.out.println("bbbbbbbbbbbbbbbbbbbbbb : " + img.length);
 				HttpHeaders header = new HttpHeaders();
 				header.setContentType(MediaType.IMAGE_JPEG);
 				return new ResponseEntity<byte[]>(img, header, HttpStatus.OK);
