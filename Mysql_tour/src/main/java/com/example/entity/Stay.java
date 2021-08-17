@@ -3,6 +3,7 @@ package com.example.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.Id;
 
 @Entity
@@ -38,8 +39,17 @@ public class Stay {
 	
 	@Column(name = "image")
 	private byte[] image;
-
 	
+	@Transient // 컬럼생성하지 않음
+	private String base64;
+
+	public String getBase64() {
+		return base64;
+	}
+
+	public void setBase64(String base64) {
+		this.base64 = base64;
+	}
 
 	public int getIndex() {
 		return index;

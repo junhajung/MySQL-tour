@@ -368,7 +368,7 @@
 									<form action="${pageContext.request.contextPath}/user/content_update"
 										method="post" enctype="multipart/form-data">
 										<input type="hidden" value="stay" name="role"> <input
-											type="hidden" value="${staylist.id}" name="id"> <input
+											type="hidden" value="${staylist.index}" name="id"> <input
 											type="hidden" value="${staylist.name}" name="prename">
 										 <input type="hidden" value="" name="phone"> 
 										  <input

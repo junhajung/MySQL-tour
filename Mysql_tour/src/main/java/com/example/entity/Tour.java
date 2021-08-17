@@ -1,9 +1,14 @@
 package com.example.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 @Entity
 @Table(name = "tour") // mongodb에 생성될 collection이름
 public class Tour {
@@ -42,6 +47,9 @@ public class Tour {
 	
 	@Column(name = "image")
 	private byte[] image;
+	
+	@OneToMany(mappedBy = "tour", cascade=CascadeType.REMOVE)
+	private List<Reply> reply = new ArrayList<>();
 
 	
 

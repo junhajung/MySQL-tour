@@ -14,6 +14,7 @@ public interface StayRepository extends JpaRepository<Stay, String>{
 
 	Stay findByName(String name);
 	
+	
 	List<Stay> findAllByNameIgnoreCaseContaining(String search);
 	
 	

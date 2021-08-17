@@ -274,7 +274,7 @@
 								  '<input type="hidden" value="" name="info">' +
 								  
 								  '<div class="form-group">'+
-								  	'<input type="file" name="img1"  style="display: block;" id="files" required/> <br/>'+
+								  	'<input type="text" name="img1"  style="display: block;" id="files" required/> <br/>'+
 				  				  '</div>'+	
 									
 								  '<div class="form-group">'+

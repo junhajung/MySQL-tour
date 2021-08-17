@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.Base64;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -44,23 +47,22 @@ public class ImageController {
 	
 	
 	@RequestMapping(value="/stay_image")
-	public ResponseEntity<byte[]> stay_imageGET(@RequestParam("name") String name, HttpServletRequest request) {
+	public ResponseEntity<byte[]> stay_imageGET(Model model, @RequestParam("name") String name, HttpServletRequest request) {
 		
-		try {
-			Stay vo = sRepository.findByName(name);
+		Stay vo = sRepository.findByName(name);
+		if(vo.getImage() != null) {
+			String tmp = Base64.getEncoder().encodeToString(vo.getImage());
+			vo.setBase64( tmp );
+			vo.setImage(null); 
+			
 			byte[] img = vo.getImage();
-			System.out.println("aaaaaaaaaaaaaaaaaaaaa : " + img.length);
 			if(img.length>0) {
-				System.out.println("bbbbbbbbbbbbbbbbbbbbbb : " + img.length);
 				HttpHeaders header = new HttpHeaders();
 				header.setContentType(MediaType.IMAGE_JPEG);
 				return new ResponseEntity<byte[]>(img, header, HttpStatus.OK);
 			}
-			return null;
 		}
-		catch (Exception e) {
-			return null;
-		}
+		return null;
 	}
 	
 	
