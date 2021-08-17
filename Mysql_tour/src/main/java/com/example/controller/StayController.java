@@ -48,15 +48,25 @@ public class StayController {
 	@RequestMapping(value="/staykate_list")
 	public String StayKatelistGET(Model model, @RequestParam(value="name") String name) {
 		List<Stay> stay = sRepository.findByKate(name);
+		
+		
+		for(Stay vo : stay) {
+			if(vo.getImage() != null) {
+				String tmp = Base64.getEncoder().encodeToString(vo.getImage());
+				vo.setBase64(tmp);
+				vo.setImage(null);
+				
+			}
+		}
 		model.addAttribute("stay", stay);
-		
-		
 		return "Stay/staykate_list";
 	}
 
 	
 	@RequestMapping(value="/stay_details")
 	public String staydetailGET(Model model, @RequestParam(value="name") String name) {
+		System.out.println(name);
+		System.out.println(sRepository.findByName(name));
 		Stay staylist = sRepository.findByName(name);
 		List<Reply> replylist = rRepository.findByName(name);
 		int cntReply = rRepository.countByName(name);
@@ -75,7 +85,7 @@ public class StayController {
 			Authentication auth,
 			@RequestParam(value = "name", defaultValue = "", required = false) String name) throws IOException {
 		
-		try {
+//		try {
 			User user = (User) auth.getPrincipal();
 			if(user!=null) {
 				String id = user.getUsername();
@@ -87,17 +97,22 @@ public class StayController {
 				vo.setUserid(id);
 				vo.setName(stay_name.getName());
 				vo.setReply(reply);
+
+				
+				System.out.println(vo.getUserid());
+				System.out.println(vo.getName());
+				System.out.println(vo.getReply());
 				rRepository.save(vo);
 			}
-		}
-		catch(Exception e){
-			String str = "<script>alert('로그인 후 이용해주세요.'); location.href='http://127.0.0.1:9098/ROOT/stay_details?name="+  URLEncoder.encode(name,"UTF-8") +"'</script>";
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println(str);
-			out.flush();
-			return "redirect:/stay_details?name="+ URLEncoder.encode(name,"UTF-8");
-		}
+//		}
+//		catch(Exception e){
+//			String str = "<script>alert('로그인 후 이용해주세요.'); location.href='http://127.0.0.1:9098/ROOT/stay_details?name="+  URLEncoder.encode(name,"UTF-8") +"'</script>";
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println(str);
+//			out.flush();
+//			return "redirect:/stay_details?name="+ URLEncoder.encode(name,"UTF-8");
+//		}
 		return "redirect:/stay_details?name="+ URLEncoder.encode(name,"UTF-8");
 	}
 }
