@@ -158,8 +158,8 @@
 		<!--Hero End -->
 		<!--================Blog Area =================-->
 <section class="blog_area single-post-area section-padding">
-				<div class="container">
-					<div class="row">
+	<div class="container">
+		<div class="row">
 		<security:authorize access="isAuthenticated() ">
 			<security:authorize access="hasAuthority('user')">
 							<div class="col-lg-8 posts-list">
@@ -249,30 +249,21 @@
 																})(marker, i));
 											}
 										</script>
-										<script async defer
-											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUGYhhiNdmmRJtBb7EFj0VVQfpVoC356o&callback=initMap">
-											
-										</script>
-
+										<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUGYhhiNdmmRJtBb7EFj0VVQfpVoC356o&callback=initMap"></script>
 									</div>
 								</div>
 							</div>
-
 			</security:authorize>
 		</security:authorize>
 
 		<security:authorize access="!isAuthenticated() ">
-			
 						<div class="col-lg-8 posts-list">
 							<div class="single-post">
-
 								<div class="feature-img">
 									<img class="card-img rounded-0"
 										src="${pageContext.request.contextPath}/stay_image?name=${staylist.name}">
 								</div>
-
 								<div class="blog_details">
-
 									<h2>${staylist.name}</h2>
 
 									<p class="excert">${staylist.content}</p>

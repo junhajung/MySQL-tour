@@ -48,14 +48,15 @@ public class Tour {
 	@Column(name = "image")
 	private byte[] image;
 	
-	@OneToMany(mappedBy = "tour", cascade=CascadeType.REMOVE)
-	private List<Reply> reply = new ArrayList<>();
+//	@OneToMany(mappedBy = "tour", cascade=CascadeType.REMOVE)
+//	private List<Reply> reply = new ArrayList<>();
 
 	
 
 	public int getIndex() {
 		return index;
 	}
+
 
 	public void setIndex(int index) {
 		this.index = index;

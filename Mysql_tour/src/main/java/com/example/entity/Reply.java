@@ -37,19 +37,51 @@ public class Reply {
 	@Column(name = "name")
 	private String name;
 	
-//	@ManyToOne  
-//    @JoinColumn (name = "food_name")
-//	private Food food;
-//	
-	@ManyToOne(optional = false)
-    @JoinColumn (name = "index", insertable=false, updatable=false)
+	@ManyToOne
+    @JoinColumn (name = "tour_reply") //외래키
 	private Tour tour;
+	
+	
+	@ManyToOne
+    @JoinColumn (name = "food_reply") //외래키
+	private Food food;
+	
+	@ManyToOne
+    @JoinColumn (name = "stay_reply") //외래키
+	private Stay stay;
+	
+	
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
+	}
+
+	public Stay getStay() {
+		return stay;
+	}
+
+	public void setStay(Stay stay) {
+		this.stay = stay;
+	}
+
+	public Tour getTour() {
+		return tour;
+	}
+
+	public void setTour(Tour tour) {
+		this.tour = tour;
+	}
 	
 	
 //	@OneToMany(mappedBy = "name", cascade=CascadeType.REMOVE)
 //	private List<Tour> tour = new ArrayList<>();
 	
 	
+
+
 
 	public String getName() {
 		return name;

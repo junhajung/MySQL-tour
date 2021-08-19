@@ -49,13 +49,11 @@ public class StayController {
 	public String StayKatelistGET(Model model, @RequestParam(value="name") String name) {
 		List<Stay> stay = sRepository.findByKate(name);
 		
-		
 		for(Stay vo : stay) {
 			if(vo.getImage() != null) {
 				String tmp = Base64.getEncoder().encodeToString(vo.getImage());
 				vo.setBase64(tmp);
 				vo.setImage(null);
-				
 			}
 		}
 		model.addAttribute("stay", stay);
@@ -65,8 +63,6 @@ public class StayController {
 	
 	@RequestMapping(value="/stay_details")
 	public String staydetailGET(Model model, @RequestParam(value="name") String name) {
-		System.out.println(name);
-		System.out.println(sRepository.findByName(name));
 		Stay staylist = sRepository.findByName(name);
 		List<Reply> replylist = rRepository.findByName(name);
 		int cntReply = rRepository.countByName(name);
@@ -98,10 +94,6 @@ public class StayController {
 				vo.setName(stay_name.getName());
 				vo.setReply(reply);
 
-				
-				System.out.println(vo.getUserid());
-				System.out.println(vo.getName());
-				System.out.println(vo.getReply());
 				rRepository.save(vo);
 			}
 //		}

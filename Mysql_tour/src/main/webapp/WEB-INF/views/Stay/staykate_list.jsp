@@ -174,13 +174,11 @@
                                                          
                                     <c:if test="${vo2.base64 ne null}">
         	                        	<a href="${pageContext.request.contextPath}/stay_details?name=${vo2.name}">
-            	            	            <img src="${pageContext.request.contextPath}/stay_image?name=${vo2.name}">
                 	    	                <img class="card-img-top" src="data:image/png;base64,${vo2.base64}" alt="">
                     	                </a>
                                     </c:if>
 					                <c:if test="${vo2.base64 eq null}">
 					                   <img src="${pageContext.request.contextPath}/resources/img/default.jpg"  class="card-img-top" alt=""/>
-					                   ${vo2.name}
 					                </c:if>	
 	                                    
                                         <!-- <span>Open</span> -->
