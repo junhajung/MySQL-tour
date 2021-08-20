@@ -51,11 +51,9 @@ public class ImageController {
 		
 		Stay vo = sRepository.findByName(name);
 		if(vo.getImage() != null) {
-			String tmp = Base64.getEncoder().encodeToString(vo.getImage());
-			vo.setBase64( tmp );
-			vo.setImage(null); 
 			
 			byte[] img = vo.getImage();
+			
 			if(img.length>0) {
 				HttpHeaders header = new HttpHeaders();
 				header.setContentType(MediaType.IMAGE_JPEG);

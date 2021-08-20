@@ -167,7 +167,7 @@
 
 									<div class="feature-img">
 										<img class="card-img rounded-0"
-											src="${pageContext.request.contextPath}/stay_image?name=${staylist.name}">
+											src="${pageContext.request.contextPath}/stay_image?name=${vo.name}">
 									</div>
 
 									<div class="blog_details">
