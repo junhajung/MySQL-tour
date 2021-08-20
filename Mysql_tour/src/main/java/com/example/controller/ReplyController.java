@@ -107,7 +107,7 @@ public class ReplyController {
 			List<Reply> test = rRepository.findByIndex(index);
 			if(test != null) {
 				reply.setReply(update_reply);
-				reply.setUserid(userid);
+//				reply.setUserid(userid);
 				
 				Calendar cal = Calendar.getInstance();
 				reply.setCreateddate(cal.getTime());

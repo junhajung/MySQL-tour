@@ -225,78 +225,78 @@ public class UserController {
 
 
 
-	@RequestMapping(value = "/myinfo")
-	public String myinfoGET(HttpServletRequest request, Authentication auth, Model model) throws IOException {
+//	@RequestMapping(value = "/myinfo")
+//	public String myinfoGET(HttpServletRequest request, Authentication auth, Model model) throws IOException {
+//
+//		String menu = request.getParameter("menu");
+//		if (menu == null) {
+//			return "redirect:/user/myinfo?menu=1";
+//		}
+//		// 스프링 security core 내장 객체 User와 같은 이름의 entity가 있어서 MyUsers로 entity 이름 바꿈
+//		User user = (User) auth.getPrincipal();
+//		if (user != null) {
+//			String id = user.getUsername();
+////			MyUsers vo = uRepository.findByUserid(id);
+//
+//			model.addAttribute("vo", vo);
+//
+//		}
+//
+//		return "User/myinfo";
+//	}
 
-		String menu = request.getParameter("menu");
-		if (menu == null) {
-			return "redirect:/user/myinfo?menu=1";
-		}
-		// 스프링 security core 내장 객체 User와 같은 이름의 entity가 있어서 MyUsers로 entity 이름 바꿈
-		User user = (User) auth.getPrincipal();
-		if (user != null) {
-			String id = user.getUsername();
-			MyUsers vo = uRepository.findByUserid(id);
-
-			model.addAttribute("vo", vo);
-
-		}
-
-		return "User/myinfo";
-	}
-
-	@RequestMapping(value = "/myinfo", method = { RequestMethod.POST })
-	public String myinfoPOST(@ModelAttribute MyUsers vo,
-			HttpServletResponse response,
-			HttpSession httpSession,
-			@RequestParam(value = "oldpw") String oldpw,
-			@RequestParam(value = "email") String email,
-			@RequestParam(value = "phone") String phone,
-			@RequestParam(value = "username") String username,
-			@RequestParam(value = "userid") String userid) throws IOException {
-		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
-		
-		MyUsers user = uRepository.findByUserid(userid);
-		
-		if(bcpe.matches(oldpw, user.getUserpw())) {
-			String changePw = bcpe.encode(vo.getUserpw());
-			
-			user.setUserpw(changePw);
-			user.setEmail(email);
-			user.setUsername(username);
-			user.setPhone(phone);
-			
-			uRepository.save(user);
-			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			httpSession.invalidate();
-			out.println("<script>alert('비밀번호 변경 완료, 다시 로그인 해주세요.'); location.href='http://127.0.0.1:9099/ROOT/home'</script>");
-			out.flush();
-		}
-		else if (oldpw.equals("")) {
-			user.setEmail(email);
-			user.setUsername(username);
-			user.setPhone(phone);
-			
-			uRepository.save(user);
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('회원정보 변경 완료!'); location.href='http://127.0.0.1:9099/ROOT/user/myinfo?menu=1'</script>");
-			out.flush();
-		}
-		else{
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('현재 비밀번호가 틀립니다.'); location.href='http://127.0.0.1:9099/ROOT/user/myinfo?menu=1'</script>");
-			out.flush();
-		}
-		
-		
-
-		// 페이지 이동
-		return "redirect:/user/myinfo?menu=1";
-	}
+//	@RequestMapping(value = "/myinfo", method = { RequestMethod.POST })
+//	public String myinfoPOST(@ModelAttribute MyUsers vo,
+//			HttpServletResponse response,
+//			HttpSession httpSession,
+//			@RequestParam(value = "oldpw") String oldpw,
+//			@RequestParam(value = "email") String email,
+//			@RequestParam(value = "phone") String phone,
+//			@RequestParam(value = "username") String username,
+//			@RequestParam(value = "userid") String userid) throws IOException {
+//		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+//		
+////		MyUsers user = uRepository.findByUserid(userid);
+//		
+//		if(bcpe.matches(oldpw, user.getUserpw())) {
+//			String changePw = bcpe.encode(vo.getUserpw());
+//			
+//			user.setUserpw(changePw);
+//			user.setEmail(email);
+//			user.setUsername(username);
+//			user.setPhone(phone);
+//			
+//			uRepository.save(user);
+//			
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			httpSession.invalidate();
+//			out.println("<script>alert('비밀번호 변경 완료, 다시 로그인 해주세요.'); location.href='http://127.0.0.1:9099/ROOT/home'</script>");
+//			out.flush();
+//		}
+//		else if (oldpw.equals("")) {
+//			user.setEmail(email);
+//			user.setUsername(username);
+//			user.setPhone(phone);
+//			
+//			uRepository.save(user);
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>alert('회원정보 변경 완료!'); location.href='http://127.0.0.1:9099/ROOT/user/myinfo?menu=1'</script>");
+//			out.flush();
+//		}
+//		else{
+//			response.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>alert('현재 비밀번호가 틀립니다.'); location.href='http://127.0.0.1:9099/ROOT/user/myinfo?menu=1'</script>");
+//			out.flush();
+//		}
+//		
+//		
+//
+//		// 페이지 이동
+//		return "redirect:/user/myinfo?menu=1";
+//	}
 	
 	@RequestMapping(value = "/content_list")
 	public String content_list(Model model) {
@@ -499,43 +499,43 @@ public class UserController {
    }
    
    
-   // admin이 user회원 탈퇴 시키기
-	@RequestMapping(value = "/delete")
-	public String delete(Model model, @RequestParam(value = "userid") String userid) {
-
-		uRepository.deleteByUserid(userid);
-
-		return "redirect:/user/admin_user";
-	}
-	
-	//회원 탈퇴 추가
-	@RequestMapping(value = "/mydelete", method = RequestMethod.POST)
-	public String deletePOST(HttpSession httpSession,
-			HttpServletResponse response,
-			Authentication auth, @ModelAttribute MyUsers vo,
-			@RequestParam(value = "userid") String userid,
-			@RequestParam(value = "userpw") String userpw) throws IOException {
-		
-		// 스프링 security core 내장 객체 User와 같은 이름의 entity가 있어서 MyUsers로 entity 이름 바꿈
-		User user = (User) auth.getPrincipal();
-		System.out.println(user.getUsername());
-		System.out.println(userid);
-		MyUsers users = uRepository.findByUserid(userid);
-		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
-		if (user != null) {
-			String id = user.getUsername();
-			if (id.equals(userid) && bcpe.matches(userpw, users.getUserpw())) {
-				uRepository.deleteByUserid(id);					
-				httpSession.invalidate();
-			}
-			else {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.'); location.href='http://127.0.0.1:9099/ROOT/user/myinfo?menu=2'</script>");
-				out.flush();
-				
-			}
-		}
-		return "redirect:/home";
-	}
+//   // admin이 user회원 탈퇴 시키기
+//	@RequestMapping(value = "/delete")
+//	public String delete(Model model, @RequestParam(value = "userid") String userid) {
+//
+//		uRepository.deleteByUserid(userid);
+//
+//		return "redirect:/user/admin_user";
+//	}
+//	
+//	//회원 탈퇴 추가
+//	@RequestMapping(value = "/mydelete", method = RequestMethod.POST)
+//	public String deletePOST(HttpSession httpSession,
+//			HttpServletResponse response,
+//			Authentication auth, @ModelAttribute MyUsers vo,
+//			@RequestParam(value = "userid") String userid,
+//			@RequestParam(value = "userpw") String userpw) throws IOException {
+//		
+//		// 스프링 security core 내장 객체 User와 같은 이름의 entity가 있어서 MyUsers로 entity 이름 바꿈
+//		User user = (User) auth.getPrincipal();
+//		System.out.println(user.getUsername());
+//		System.out.println(userid);
+//		MyUsers users = uRepository.findByUserid(userid);
+//		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+//		if (user != null) {
+//			String id = user.getUsername();
+//			if (id.equals(userid) && bcpe.matches(userpw, users.getUserpw())) {
+//				uRepository.deleteByUserid(id);					
+//				httpSession.invalidate();
+//			}
+//			else {
+//				response.setContentType("text/html; charset=UTF-8");
+//				PrintWriter out = response.getWriter();
+//				out.println("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.'); location.href='http://127.0.0.1:9099/ROOT/user/myinfo?menu=2'</script>");
+//				out.flush();
+//				
+//			}
+//		}
+//		return "redirect:/home";
+//	}
 }

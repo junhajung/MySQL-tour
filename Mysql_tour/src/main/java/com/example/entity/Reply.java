@@ -31,33 +31,35 @@ public class Reply {
 	@Column(name = "createddate")
     private Date createddate;
 	
-	@Column(name = "userid")
-	private String userid;
 	
 	@Column(name = "name")
 	private String name;
 	
-	@ManyToOne
-    @JoinColumn (name = "tour_reply") //외래키
-	private Tour tour;
-	
-	
-	@ManyToOne
-    @JoinColumn (name = "food_reply") //외래키
-	private Food food;
-	
+//	@ManyToOne
+//    @JoinColumn (name = "tour_reply") //외래키
+//	private Tour tour;
+//	
+//	
+//	@ManyToOne
+//    @JoinColumn (name = "food_reply") //외래키
+//	private Food food;
+//	
 	@ManyToOne
     @JoinColumn (name = "stay_reply") //외래키
 	private Stay stay;
 	
+	@ManyToOne
+    @JoinColumn (name = "userid") //외래키
+	private MyUsers userid;
 	
-	public Food getFood() {
-		return food;
-	}
-
-	public void setFood(Food food) {
-		this.food = food;
-	}
+	
+//	public Food getFood() {
+//		return food;
+//	}
+//
+//	public void setFood(Food food) {
+//		this.food = food;
+//	}
 
 	public Stay getStay() {
 		return stay;
@@ -67,21 +69,17 @@ public class Reply {
 		this.stay = stay;
 	}
 
-	public Tour getTour() {
-		return tour;
-	}
-
-	public void setTour(Tour tour) {
-		this.tour = tour;
-	}
+//	public Tour getTour() {
+//		return tour;
+//	}
+//
+//	public void setTour(Tour tour) {
+//		this.tour = tour;
+//	}
 	
 	
 //	@OneToMany(mappedBy = "name", cascade=CascadeType.REMOVE)
 //	private List<Tour> tour = new ArrayList<>();
-	
-	
-
-
 
 	public String getName() {
 		return name;
@@ -91,8 +89,6 @@ public class Reply {
 		this.name = name;
 	}
 
-
-	
 	public int getIndex() {
 		return index;
 	}
@@ -110,8 +106,6 @@ public class Reply {
 		this.reply = reply;
 	}
 
-
-
 	public Date getCreateddate() {
 		return createddate;
 	}
@@ -120,17 +114,16 @@ public class Reply {
 		this.createddate = createddate;
 	}
 
-	public String getUserid() {
+	public MyUsers getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(MyUsers userid) {
 		this.userid = userid;
 	}
 
-
-
-
+	
+	
 	
 	
 }

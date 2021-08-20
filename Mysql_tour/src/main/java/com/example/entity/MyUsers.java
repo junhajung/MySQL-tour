@@ -1,56 +1,47 @@
 package com.example.entity;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class MyUsers{
 	
 	@Id
+	@Column(name="userid")
 	private String userid;
 
+	@Column(name="userpw")
 	private String userpw;
 	
+	@Column(name="email")
 	private String email;
 	
+	@Column(name="username")
 	private String username;
 	
+	@Column(name="phone")
 	private String phone;
 	
+	@Column(name="userauth")
 	private String userauth;
 	
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date createdDate = new Date();
-
-//	@OneToMany
-//	private List<Reply> reply;
-	
-	// 댓글 구현
-	
+	@CreationTimestamp
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@Column(name = "createddate")
+    private Date createddate;
 
 	public String getUserid() {
 		return userid;
 	}
-	
-	
-//	public List<Reply> getReply() {
-//		return reply;
-//	}
-//
-//
-//	public void setReply(List<Reply> reply) {
-//		this.reply = reply;
-//	}
-
 
 	public void setUserid(String userid) {
 		this.userid = userid;
@@ -96,13 +87,15 @@ public class MyUsers{
 		this.userauth = userauth;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	public Date getCreateddate() {
+		return createddate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setCreateddate(Date createddate) {
+		this.createddate = createddate;
 	}
+
+	
 
 
 	

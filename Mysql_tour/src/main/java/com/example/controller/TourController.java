@@ -106,7 +106,7 @@ public class TourController {
 				Tour tour_name = tRepository.findByName(name);
 				// 저장할 댓글에 필요한건 로그인된 userid, 게시글 name, 댓글 reply 정보.
 				Reply vo = new Reply();
-				vo.setUserid(id);
+//				vo.setUserid(id);
 				vo.setName(tour_name.getName());
 				vo.setReply(reply);
 				
