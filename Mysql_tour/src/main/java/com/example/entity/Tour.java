@@ -1,20 +1,17 @@
 package com.example.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "tour") // mongodb에 생성될 collection이름
 public class Tour {
 	@Id
-	private int index;
-
+	private int id;
+	
 	@Column(name = "region")
 	private String region;
 
@@ -48,22 +45,32 @@ public class Tour {
 	@Column(name = "image")
 	private byte[] image;
 	
+	@ManyToOne
+    @JoinColumn (name = "top8") //외래키
+	private TOP8 top8;
+	
 //	@OneToMany(mappedBy = "tour", cascade=CascadeType.REMOVE)
 //	private List<Reply> reply = new ArrayList<>();
 
 	
-
-	public int getIndex() {
-		return index;
-	}
-
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
-
 	public String getRegion() {
 		return region;
+	}
+
+	public TOP8 getTop8() {
+		return top8;
+	}
+
+	public void setTop8(TOP8 top8) {
+		this.top8 = top8;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setRegion(String region) {

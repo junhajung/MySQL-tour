@@ -12,10 +12,7 @@ import javax.persistence.Table;
 @Table(name  = "activity")
 public class Activity {
 	@Id
-	private int index;
-	
-	@Column(name = "_id")
-	private String id;
+	private int id;
 
 	@Column(name = "region")
 	private String region;
@@ -45,11 +42,11 @@ public class Activity {
     private byte[] image;
     
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

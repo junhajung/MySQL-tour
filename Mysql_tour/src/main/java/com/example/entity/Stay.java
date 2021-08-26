@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Table(name = "stay")
 public class Stay {
 	@Id
-	private int index;
+	private int id;
 
 	@Column(name = "region")
 	private String region;
@@ -51,13 +51,15 @@ public class Stay {
 		this.base64 = base64;
 	}
 
-	public int getIndex() {
-		return index;
+	public int getId() {
+		return id;
 	}
 
-	public void setIndex(int index) {
-		this.index = index;
+	public void setId(int id) {
+		this.id = id;
 	}
+
+
 
 	public String getRegion() {
 		return region;

@@ -729,13 +729,13 @@
                                           		<security:authorize access="hasAuthority('user')">
                                             	  <security:authentication property="principal.username" var="user_id"/>
 		                                              <c:if test="${user_id eq list.userid}" >
-		                                               	<a href="${pageContext.request.contextPath}/reply/reply_delete?id=${list.index}&name=${list.name}" style="color:black;">삭제</a>
+		                                               	<a href="${pageContext.request.contextPath}/reply/reply_delete?id=${list.id}&name=${list.name}" style="color:black;">삭제</a>
 		                                               	<a href="javascript:void(0);" style="color:black;" class="update_insert">수정</a>
 		                                               	<input type="submit" value="수정" class="update_button" style="color:black; background-color:transparent;  border:0px transparent solid; cursor: pointer;">
 		                                              </c:if>
                                        			</security:authorize>
 	                                             <security:authorize access="hasAuthority('admin')">
-	                                             		<a href="${pageContext.request.contextPath}/reply/reply_delete?id=${list.index}&name=${list.name}" style="color:black; ">삭제</a>
+	                                             		<a href="${pageContext.request.contextPath}/reply/reply_delete?id=${list.id}&name=${list.name}" style="color:black; ">삭제</a>
 	                                             </security:authorize>
                                          	</security:authorize>
                                         </div>

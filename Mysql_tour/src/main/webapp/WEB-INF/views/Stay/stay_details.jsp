@@ -359,7 +359,7 @@
 									<form action="${pageContext.request.contextPath}/user/content_update"
 										method="post" enctype="multipart/form-data">
 										<input type="hidden" value="stay" name="role"> <input
-											type="hidden" value="${staylist.index}" name="id"> <input
+											type="hidden" value="${staylist.id}" name="id"> <input
 											type="hidden" value="${staylist.name}" name="prename">
 										 <input type="hidden" value="" name="phone"> 
 										  <input
@@ -582,7 +582,7 @@
 		                                             	 <c:if test="${user_id eq list.userid}" >
 		                                             	
 				                                         	내용 : <input type="text" value="${list.reply}" name="update_reply" > 
-				                                         	<input type="hidden" value="${list.index}" name="index">
+				                                         	<input type="hidden" value="${list.id}" name="id">
 				                                         	<input type="hidden" value="${list.name}" name="name">
 				                                         	<br/>
 				                                        
@@ -598,13 +598,13 @@
                                           		<security:authorize access="hasAuthority('user')">
                                             	  <security:authentication property="principal.username" var="user_id"/>
 		                                              <c:if test="${user_id eq list.userid}" >
-		                                               	<a href="${pageContext.request.contextPath}/reply/reply_delete?index=${list.index}&name=${list.name}" style="color:black;">삭제</a>
+		                                               	<a href="${pageContext.request.contextPath}/reply/reply_delete?id=${list.id}&name=${list.name}" style="color:black;">삭제</a>
 		                                               	<a href="javascript:void(0);" style="color:black;" class="update_insert">수정</a>
 		                                               	<input type="submit" value="수정" class="update_button" style="color:black; background-color:transparent;  border:0px transparent solid; cursor: pointer;">
 		                                              </c:if>
                                        			</security:authorize>
 	                                             <security:authorize access="hasAuthority('admin')">
-	                                             		<a href="${pageContext.request.contextPath}/reply/reply_delete?index=${list.index}&name=${list.name}" style="color:black; ">삭제</a>
+	                                             		<a href="${pageContext.request.contextPath}/reply/reply_delete?id=${list.id}&name=${list.name}" style="color:black; ">삭제</a>
 	                                             </security:authorize>
                                          	</security:authorize>
                                         </div>

@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 @Entity
 @Table(name = "MyMap")
 public class MyMap {
@@ -35,7 +37,51 @@ public class MyMap {
 	@Column(name = "addr")
 	private String addr;
 	
+	@ManyToOne
+    @JoinColumn (name = "tour_map") //외래키
+	private Tour tour;
 	
+	@ManyToOne
+    @JoinColumn (name = "food_map") //외래키
+	private Food food;
+	
+	@ManyToOne
+    @JoinColumn (name = "stay_map") //외래키
+	private Stay stay;
+	
+	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Tour getTour() {
+		return tour;
+	}
+
+	public void setTour(Tour tour) {
+		this.tour = tour;
+	}
+
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
+	}
+
+	public Stay getStay() {
+		return stay;
+	}
+
+	public void setStay(Stay stay) {
+		this.stay = stay;
+	}
 
 	public String getAddr() {
 		return addr;

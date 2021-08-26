@@ -21,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Reply {
 	
 	@Id
-	private int index;
+	private int id;
 	
 	@Column(name = "reply")
 	private String reply;
@@ -35,15 +35,14 @@ public class Reply {
 	@Column(name = "name")
 	private String name;
 	
-//	@ManyToOne
-//    @JoinColumn (name = "tour_reply") //외래키
-//	private Tour tour;
-//	
-//	
-//	@ManyToOne
-//    @JoinColumn (name = "food_reply") //외래키
-//	private Food food;
-//	
+	@ManyToOne
+    @JoinColumn (name = "tour_reply") //외래키
+	private Tour tour;
+	
+	@ManyToOne
+    @JoinColumn (name = "food_reply") //외래키
+	private Food food;
+	
 	@ManyToOne
     @JoinColumn (name = "stay_reply") //외래키
 	private Stay stay;
@@ -53,13 +52,13 @@ public class Reply {
 	private MyUsers userid;
 	
 	
-//	public Food getFood() {
-//		return food;
-//	}
-//
-//	public void setFood(Food food) {
-//		this.food = food;
-//	}
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
+	}
 
 	public Stay getStay() {
 		return stay;
@@ -69,17 +68,14 @@ public class Reply {
 		this.stay = stay;
 	}
 
-//	public Tour getTour() {
-//		return tour;
-//	}
-//
-//	public void setTour(Tour tour) {
-//		this.tour = tour;
-//	}
-	
-	
-//	@OneToMany(mappedBy = "name", cascade=CascadeType.REMOVE)
-//	private List<Tour> tour = new ArrayList<>();
+	public Tour getTour() {
+		return tour;
+	}
+
+	public void setTour(Tour tour) {
+		this.tour = tour;
+	}
+
 
 	public String getName() {
 		return name;
@@ -89,14 +85,14 @@ public class Reply {
 		this.name = name;
 	}
 
-	public int getIndex() {
-		return index;
+
+	public int getId() {
+		return id;
 	}
 
-	public void setIndex(int index) {
-		this.index = index;
+	public void setId(int id) {
+		this.id = id;
 	}
-
 
 	public String getReply() {
 		return reply;

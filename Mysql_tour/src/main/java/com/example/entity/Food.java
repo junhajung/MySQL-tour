@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Food {
 	
 	@Id
-	private int index;
+	private int id;
 		
 	@Column(name = "region")
 	private String region;
@@ -49,13 +49,19 @@ public class Food {
 		super();
 	}
 
-	public int getIndex() {
-		return index;
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public void setIndex(int index) {
-		this.index = index;
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
+
 
 	public String getRegion() {
 		return region;

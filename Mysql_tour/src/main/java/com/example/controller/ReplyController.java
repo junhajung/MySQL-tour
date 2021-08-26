@@ -3,7 +3,6 @@ package com.example.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.Principal;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -72,8 +71,8 @@ public class ReplyController {
 	@RequestMapping(value = "/reply_delete")
 	public String reply_delete(Model model, 
 			@RequestParam(value = "name") String name,
-			@RequestParam(value = "index") int index) throws UnsupportedEncodingException {
-		rRepository.deleteByIndex(index);
+			@RequestParam(value = "id") int id) throws UnsupportedEncodingException {
+		rRepository.deleteById(id);
 		
 		if(tRepository.findByName(name) != null) {
 			return "redirect:/tour_details?name=" + URLEncoder.encode(name, "UTF-8");
@@ -92,7 +91,7 @@ public class ReplyController {
 			@ModelAttribute Reply reply,
 			Principal principal,
 			@RequestParam(value = "name") String name,
-			@RequestParam(value = "index") int index,
+			@RequestParam(value = "id") int id,
 			@RequestParam(value = "update_reply") String update_reply) throws UnsupportedEncodingException {
 		
 		String userid = principal.getName();
@@ -104,7 +103,7 @@ public class ReplyController {
 			return "redirect:/food_details?name=" + URLEncoder.encode(name, "UTF-8");	
 		}
 		else {
-			List<Reply> test = rRepository.findByIndex(index);
+			List<Reply> test = rRepository.findById(id);
 			if(test != null) {
 				reply.setReply(update_reply);
 //				reply.setUserid(userid);

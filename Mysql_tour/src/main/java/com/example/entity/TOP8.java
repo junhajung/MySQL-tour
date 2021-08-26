@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Table(name = "top8")
 public class TOP8 {
 	@Id
-	private int index;
+	private int id;
 	
 	@Column(name = "name")
 	private String name;
@@ -22,15 +22,14 @@ public class TOP8 {
 	@Column(name = "image")
 	private byte[] image;
 	
-
 	
 
-	public int getIndex() {
-		return index;
+	public int getId() {
+		return id;
 	}
 
-	public void setIndex(int index) {
-		this.index = index;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
