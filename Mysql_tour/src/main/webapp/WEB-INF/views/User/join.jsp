@@ -158,11 +158,11 @@
 						if(data==0 && $.trim($('#userid').val()) != '') {
 							idx=true;
 							$('userid').attr("readonly", true);
-							var html = "<style='color: green'> 사용가능합니다 </style>"
+							var html = "<p style='color: blue'> 사용가능합니다 </p>"
 							$('#idCheck').empty();
 							$('#idCheck').append(html);
 						}else{
-							var html = "<style='color: red'> 사용불가능합니다 </style>"
+							var html = "<p style='color: red'> 사용불가능합니다 </p>"
 								$('#idCheck').empty();
 								$('#idCheck').append(html);
 						}
