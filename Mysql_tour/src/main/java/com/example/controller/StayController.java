@@ -62,14 +62,15 @@ public class StayController {
 
 	
 	@RequestMapping(value="/stay_details")
-	public String staydetailGET(Model model, @RequestParam(value="name") String name) {
-		Stay staylist = sRepository.findByName(name);
-		List<Reply> replylist = rRepository.findByName(name);
-		int cntReply = rRepository.countByName(name);
-		
+	public String staydetailGET(Model model, @RequestParam(value="id") Integer id) {
+		Optional<Stay> staylist = sRepository.findById(id);
+//		List<Reply> replylist = rRepository.findById(id);
+//		int cntReply = rRepository.countByName(name);
+//		
 		model.addAttribute("staylist" , staylist);
-		model.addAttribute("replylist", replylist);
-		model.addAttribute("cntReply", cntReply);
+		System.out.println("test : " + staylist.get().getName());
+//		model.addAttribute("replylist", replylist);
+//		model.addAttribute("cntReply", cntReply);
 		
 		return "Stay/stay_details";
 	}
@@ -79,30 +80,31 @@ public class StayController {
 			@RequestParam(value="reply") String reply,
 			HttpServletResponse response,
 			Authentication auth,
-			@RequestParam(value = "id", defaultValue = "", required = false) String id) throws IOException {
+			@RequestParam(value = "id", defaultValue = "", required = false) Integer id) throws IOException {
 		
 		try {
 			User user = (User) auth.getPrincipal();
 			if(user!=null) {
 //				String id = user.getUsername();
 				
-				Optional<Stay> stay_name = sRepository.findById(id);
+				Optional<Stay> staylist = sRepository.findById(id);
 				// 저장할 댓글에 필요한건 로그인된 userid, 게시글 name, 댓글 reply 정보.
 				Reply vo = new Reply();
-				vo.setStay(stay_name);
+//				vo.setStay(stay_name);
 				vo.setReply(reply);
 
 				rRepository.save(vo);
 			}
 		}
 		catch(Exception e){
-			String str = "<script>alert('로그인 후 이용해주세요.'); location.href='http://127.0.0.1:9098/ROOT/stay_details?name="+  URLEncoder.encode(name,"UTF-8") +"'</script>";
+			
+			String str = "<script>alert('로그인 후 이용해주세요.'); location.href='http://127.0.0.1:9098/ROOT/stay_details?id="+  id +"'</script>";
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println(str);
 			out.flush();
-			return "redirect:/stay_details?name="+ URLEncoder.encode(name,"UTF-8");
+			return "redirect:/stay_details?id="+ id;
 		}
-		return "redirect:/stay_details?name="+ URLEncoder.encode(name,"UTF-8");
+		return "redirect:/stay_details?id="+ id;
 	}
 }

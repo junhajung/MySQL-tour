@@ -18,8 +18,6 @@ public interface ReplyRepository extends JpaRepository<Reply, String> {
 	// SELECT COUNT(*) FROM USER WHERE USERID=#{USERID}
 //	  int countByUseridIgnoreCaseContaining(String userid);
 	  
-	  int countByName(String name);
-	  
 //	  int countByUserid(int id);
 
 	  Boolean existsByUserid(String userid);
@@ -37,13 +35,11 @@ public interface ReplyRepository extends JpaRepository<Reply, String> {
 
 //	Reply findByIndex(int index);
 
-	List<Reply> findByNameOrderByCreateddateDesc(String name);
+//	List<Reply> findByNameOrderByCreateddateDesc(String name);
 
 //	List<Reply> findByUseridOrderByCreateddateDesc(int id, PageRequest pageable);
 
-	List<Reply> findByName(String name);
-
-
+//	List<Reply> findByName(String name);
 
 	void deleteById(int id);
 

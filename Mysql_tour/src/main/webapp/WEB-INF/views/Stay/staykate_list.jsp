@@ -173,7 +173,7 @@
                                     <div class="list-img">
                                                          
                                     <c:if test="${vo2.base64 ne null}">
-        	                        	<a href="${pageContext.request.contextPath}/stay_details?name=${vo2.name}">
+        	                        	<a href="${pageContext.request.contextPath}/stay_details?id=${vo2.id}">
                 	    	                <img class="card-img-top" src="data:image/png;base64,${vo2.base64}" alt="">
                     	                </a>
                                     </c:if>
@@ -185,7 +185,7 @@
                                     </div>
                                     <div class="list-caption">
                                         <span>${vo2.region}</span>
-                                       		  <h3><a href="${pageContext.request.contextPath}/stay_details?name=${vo2.name}">${vo2.name}</a></h3>
+                                       		  <h3><a href="${pageContext.request.contextPath}/stay_details?id=${vo2.id}">${vo2.name}</a></h3>
                                         	<security:authorize access="isAuthenticated()">
 											<security:authorize access="hasAuthority('admin')">
 											<form action="${pageContext.request.contextPath}/user/admin_delete" method="POST" style="position: absolute; top: 35px; right: 25px;" onsubmit="return confirm('삭제하시겠습니까?');">

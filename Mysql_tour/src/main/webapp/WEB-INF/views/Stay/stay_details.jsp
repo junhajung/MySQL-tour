@@ -149,14 +149,14 @@
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="hero-cap text-center pt-50">
-							<h2>${staylist.name}</h2>
+							<h2>${staylist}</h2>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!--Hero End -->
-		<!--================Blog Area =================-->
+		<%-- <!--================Blog Area =================-->
 <section class="blog_area single-post-area section-padding">
 	<div class="container">
 		<div class="row">
@@ -167,7 +167,7 @@
 
 									<div class="feature-img">
 										<img class="card-img rounded-0"
-											src="${pageContext.request.contextPath}/stay_image?name=${vo.name}">
+											src="${pageContext.request.contextPath}/stay_image?id=${staylist.id}">
 									</div>
 
 									<div class="blog_details">
@@ -260,8 +260,7 @@
 						<div class="col-lg-8 posts-list">
 							<div class="single-post">
 								<div class="feature-img">
-									<img class="card-img rounded-0"
-										src="${pageContext.request.contextPath}/stay_image?name=${staylist.name}">
+									<img class="card-img rounded-0" src="${pageContext.request.contextPath}/stay_image?id=${staylist.id}">
 								</div>
 								<div class="blog_details">
 									<h2>${staylist.name}</h2>
@@ -323,20 +322,12 @@
 														map : map
 													});
 
-											google.maps.event
-													.addListener(
-															marker,
-															'click',
-															(function(marker, i) {
-																return function() {
-																	infowindow
-																			.setContent('${staylist.addr}');
-																	infowindow
-																			.open(
-																					map,
-																					marker);
-																}
-															})(marker, i));
+											google.maps.event.addListener(marker,'click',(function(marker, i) {
+												return function() {
+													infowindow.setContent('${staylist.addr}');
+													infowindow.open(map,marker);
+												}
+											})(marker, i));
 										}
 									</script>
 									<script async defer
@@ -349,11 +340,8 @@
 						</div>
 
 		</security:authorize>
-
-
-
-								<security:authorize access="isAuthenticated()">
-								<security:authorize access="hasAuthority('admin')">
+					<security:authorize access="isAuthenticated()">
+					<security:authorize access="hasAuthority('admin')">
 							<div class="col-lg-8 posts-list">
 								<div class="single-post">
 									<form action="${pageContext.request.contextPath}/user/content_update"
@@ -371,7 +359,7 @@
 
 										<div class="feature-img">
 											<img class="card-img rounded-0"
-												src="${pageContext.request.contextPath}/stay_image?name=${staylist.name}">
+												src="${pageContext.request.contextPath}/stay_image?id=${staylist.id}">
 										</div>
 
 										<div class="form-group">
@@ -527,9 +515,9 @@
 
 					<div class="blog_right_sidebar">
 						<aside class="single_sidebar_widget search_widget">
-							<h4 class="widget_title">Comments ( ${cntReply} )</h4>
+							<h4 class="widget_title">Comments (  )</h4>
 								<div class="form-group">
-								<form action="${pageContext.request.contextPath}/stay_details?name=${staylist.name}" method="post">
+								<form action="${pageContext.request.contextPath}/stay_details?id=${staylist.id}" method="post">
 									<security:authorize access="isAuthenticated()">
 										<security:authorize access="hasAuthority('user')">
 											<div class="input-group mb-3">
@@ -617,7 +605,7 @@
 				</div>
 		</div>
 					</div>
-				</section>
+				</section> --%>
 				<!--================ Blog Area end =================-->
 	</main>
 	<footer>
